@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UNC Dining Plate Planner: Lenoir &amp; Chase Emissions Estimator</title>
+<style>
+:root{--bg:#f4f7f9;--card:#fff;--ink:#14212b;--mut:#5b6b77;--line:#d9e1e7;--acc:#13294b;--carolina:#4b9cd3;--accbg:#e8f2f9;--warn:#fbf1e3;--eqbg:#eef5f0;--eqink:#1f4e32}
+@media (prefers-color-scheme:dark){:root{--bg:#0f171d;--card:#17232c;--ink:#e8eef2;--mut:#9fb0bc;--line:#2b3b47;--acc:#6db3e3;--carolina:#4b9cd3;--accbg:#1d3342;--warn:#2e2618;--eqbg:#182b20;--eqink:#8fd4a9}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Avenir Next","Segoe UI",Helvetica,Arial,sans-serif}
+.wrap{max-width:1020px;margin:0 auto;padding:0 16px 48px}
+.header-top{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-top:24px}
+h1{font-size:1.85rem;line-height:1.15;margin:0;letter-spacing:-.01em}
+.sync-pill{font-size:.8rem;padding:4px 10px;border-radius:99px;background:var(--accbg);color:var(--acc);font-weight:600}
+.sub{color:var(--mut);margin:6px 0 14px;max-width:68ch;font-size:.95rem}
+
+/* Sticky Summary Header */
+#sum{position:sticky;top:0;z-index:10;background:var(--bg);padding:10px 0 12px;border-bottom:1px solid var(--line)}
+.tot-row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.tot{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+#total{font-size:2.5rem;font-weight:700;letter-spacing:-.02em;line-height:1}
+.unit{color:var(--mut)}
+#equiv{background:var(--eqbg);color:var(--eqink);padding:6px 12px;border-radius:8px;font-size:.88rem;font-weight:500}
+#bar{display:flex;height:20px;border-radius:10px;overflow:hidden;background:var(--line);margin-top:10px}
+#bar span{display:block;min-width:2px;transition:width .25s}
+#legend{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:8px;font-size:.8rem;color:var(--mut)}
+#legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px}
+
+/* Hall Tabs & Meal Sub-tabs */
+.nav-box{margin:16px 0 10px;display:flex;flex-direction:column;gap:10px}
+.hall-tabs{display:flex;gap:8px;border-bottom:2px solid var(--line)}
+.hall-tab{padding:10px 20px;font-weight:700;font-size:1rem;border:1px solid transparent;border-bottom:none;border-radius:10px 10px 0 0;background:transparent;color:var(--mut);margin-bottom:-2px;cursor:pointer}
+.hall-tab.active{background:var(--card);color:var(--acc);border-color:var(--line);border-bottom:2px solid var(--card)}
+.meal-bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;background:var(--card);padding:10px 14px;border-radius:10px;border:1px solid var(--line)}
+.meal-tabs{display:flex;gap:6px;flex-wrap:wrap}
+.meal-tab{padding:6px 14px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-weight:600;font-size:.9rem;cursor:pointer}
+.meal-tab.active{background:var(--carolina);color:#fff;border-color:var(--carolina)}
+.hall-meta{font-size:.82rem;color:var(--mut)}
+
+.toolbar{display:flex;justify-content:space-between;align-items:center;margin:10px 0 4px;flex-wrap:wrap;gap:8px}
+.search{padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:.9rem;min-width:220px}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--mut);border-radius:20px;padding:5px 14px;font-size:.88rem;cursor:pointer}
+.chip:hover{border-color:var(--ink);color:var(--ink)}
+
+/* Main Grid */
+.grid{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:start}
+@media(max-width:780px){.grid{grid-template-columns:1fr}}
+h2{font-size:1.02rem;margin:18px 0 6px}
+.item{display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:center;padding:9px 12px;background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:6px}
+.item.on{border-color:var(--carolina);background:var(--accbg)}
+.nm{font-weight:600}.mt{grid-column:1;font-size:.8rem;color:var(--mut)}
+.est{grid-column:1;font-size:.84rem}
+.ctl{grid-column:2;grid-row:1/4;display:flex;align-items:center;gap:8px}
+.ctl button{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:1.15rem;line-height:1;cursor:pointer}
+.ctl button:hover{border-color:var(--carolina)}
+.q{min-width:1.2em;text-align:center;font-weight:700}
+
+/* Breakdown Panel */
+.rk{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.rr{margin:0 0 10px}.rr .l{display:flex;justify-content:space-between;gap:8px;font-size:.9rem}
+.rr .t{height:8px;border-radius:4px;background:var(--line);margin-top:3px;overflow:hidden}.rr .t span{display:block;height:100%}
+.empty{color:var(--mut);font-size:.92rem;margin:4px 0}
+#swap{margin-top:12px;padding:10px 14px;border-radius:10px;background:var(--warn);font-size:.9rem}
+details{margin-top:24px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+summary{cursor:pointer;font-weight:600}
+details p,details li{font-size:.88rem;color:var(--mut)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="header-top">
+  <h1>UNC Dining Plate Planner</h1>
+  <span class="sync-pill" id="sync-date">Loading live CDS menu…</span>
+</div>
+<p class="sub">Build a plate from today's <b>Top of Lenoir</b> and <b>Chase Dining Hall</b> menus across Breakfast, Lunch, and Dinner to estimate its climate footprint.</p>
+
+<div id="sum" aria-live="polite">
+  <div class="tot-row">
+    <div class="tot"><span id="total">0.00</span><span class="unit">kg CO₂e estimated for this plate</span></div>
+    <div id="equiv">🚗 Equivalent to driving <b>0.0 miles</b> in a gas car (or <b>0</b> phone charges)</div>
+  </div>
+  <div id="bar" role="img" aria-label="Share of plate emissions by food group"></div>
+  <div id="legend"></div>
+</div>
+
+<div class="nav-box">
+  <div class="hall-tabs" role="tablist" aria-label="Dining Hall">
+    <button class="hall-tab active" role="tab" aria-selected="true" data-hall="lenoir">Top of Lenoir</button>
+    <button class="hall-tab" role="tab" aria-selected="false" data-hall="chase">Chase Dining Hall</button>
+  </div>
+  <div class="meal-bar">
+    <div class="meal-tabs" role="tablist" aria-label="Meal Period">
+      <button class="meal-tab active" role="tab" aria-selected="true" data-meal="breakfast">Breakfast</button>
+      <button class="meal-tab" role="tab" aria-selected="false" data-meal="lunch">Lunch</button>
+      <button class="meal-tab" role="tab" aria-selected="false" data-meal="dinner">Dinner</button>
+    </div>
+    <span class="hall-meta" id="hall-desc">Carolina Dining Services</span>
+  </div>
+</div>
+
+<div class="toolbar">
+  <input type="search" id="filter" class="search" placeholder="Filter dishes (e.g., chicken, tofu, eggs)…">
+  <button class="chip" id="clear">Clear plate</button>
+</div>
+
+<div class="grid">
+  <div id="picker"></div>
+  <div>
+    <h2>Where the emissions come from</h2>
+    <div class="rk" id="rank"></div>
+    <div id="swap" hidden></div>
+  </div>
+</div>
+
+<details>
+<summary>How we calculated this</summary>
+<p>Daily menu items are synced automatically from <b>Carolina Dining Services</b> and mapped to their primary <b>SIMAP Coolfood Pledge (2025)</b> ingredient factor (derived from Poore &amp; Nemecek, 2018).</p>
+<ul>
+<li><b>Real-World Comparisons:</b> Driving distance uses the U.S. EPA Greenhouse Gas Equivalencies passenger vehicle average of <b>0.39 kg CO₂e per mile</b>. Smartphone charges use the EPA factor of <b>0.0124 kg CO₂e per full charge</b>.</li>
+<li><b>Portion Weights:</b> Estimated using standard Carolina Dining Services serving portions converted to as-purchased ingredient weight.</li>
+</ul>
+</details>
+</div>
+
+<script>
+const KG_PER_MILE = 0.39;
+const KG_PER_PHONE_CHARGE = 0.0124;
+
+const GROUPS = {
+  meat:["Meat, Poultry & Seafood","#b5472f"],
+  plant:["Plant-Forward Proteins","#6b8f3a"],
+  dairy:["Dairy & Eggs","#d9a441"],
+  grain:["Grains, Bakery & Waffle Bar","#a8845a"],
+  veg:["Vegetables & Salad Bar","#2f8a5c"],
+  fruit:["Fruit & Compotes","#c96a8e"],
+  drink:["Beverages","#5f8aa6"]
+};
+
+let menuData = null;
+let itemIndex = {}; // id -> item object
+let currentHall = "lenoir";
+let currentMeal = "breakfast";
+let searchQuery = "";
+let plate = {};
+
+const per = item => (item.grams / 1000) * item.factor;
+const $ = id => document.getElementById(id);
+const fmt = x => x.toFixed(2);
+
+$("legend").innerHTML = Object.values(GROUPS).map(g=>`<span><i style="background:${g[1]}"></i>${g[0]}</span>`).join("");
+
+async function init() {
+  try {
+    const res = await fetch(`./menu_data.json?v=${Date.now()}`);
+    if (!res.ok) throw new Error("Could not load menu_data.json");
+    menuData = await res.json();
+    $("sync-date").textContent = `CDS Menu Date: ${menuData.updated_at}`;
+
+    // Build flat lookup map across all halls and meals
+    itemIndex = {};
+    for (const [hallKey, hall] of Object.entries(menuData.halls)) {
+      for (const [mealKey, items] of Object.entries(hall.meals)) {
+        for (const item of items) {
+          itemIndex[item.id] = { ...item, hallKey, hallName: hall.name, mealKey };
+        }
+      }
+    }
+    renderMenu();
+    updateSummary();
+  } catch (err) {
+    $("sync-date").textContent = "Menu data unavailable";
+    $("picker").innerHTML = `<p class="empty">Unable to load <code>menu_data.json</code>. Ensure the GitHub Action has run or host via a web server.</p>`;
+  }
+}
+
+function renderMenu() {
+  if (!menuData) return;
+  const hall = menuData.halls[currentHall];
+  $("hall-desc").textContent = hall.desc;
+
+  const items = (hall.meals[currentMeal] || []).filter(item =>
+    !searchQuery || item.name.toLowerCase().includes(searchQuery) || item.station.toLowerCase().includes(searchQuery)
+  );
+
+  if (!items.length) {
+    $("picker").innerHTML = `<p class="empty">No matching dishes found for ${hall.name} (${currentMeal}).</p>`;
+    return;
+  }
+
+  let html = "";
+  for (const [k, g] of Object.entries(GROUPS)) {
+    const groupItems = items.filter(i => i.group === k);
+    if (!groupItems.length) continue;
+    html += `<h2>${g[0]}</h2>`;
+    for (const f of groupItems) {
+      const q = plate[f.id] || 0;
+      html += `<div class="item ${q > 0 ? "on" : ""}" id="i-${f.id}">
+        <span class="nm">${f.name}</span>
+        <span class="mt">${f.station} · ~${f.grams} g (${f.category})</span>
+        <span class="est">≈ ${fmt(per(f))} kg CO₂e per serving</span>
+        <span class="ctl">
+          <button aria-label="Remove one ${f.name}" data-id="${f.id}" data-d="-1">−</button>
+          <span class="q" id="q-${f.id}" aria-live="polite">${q}</span>
+          <button aria-label="Add one ${f.name}" data-id="${f.id}" data-d="1">+</button>
+        </span>
+      </div>`;
+    }
+  }
+  $("picker").innerHTML = html;
+}
+
+function updateSummary() {
+  const sel = Object.entries(plate)
+    .filter(([id, q]) => q > 0 && itemIndex[id])
+    .map(([id, q]) => ({ f: itemIndex[id], q, e: q * per(itemIndex[id]) }))
+    .sort((a, b) => b.e - a.e);
+
+  const total = sel.reduce((s, x) => s + x.e, 0);
+  $("total").textContent = fmt(total);
+
+  const miles = total / KG_PER_MILE;
+  const charges = Math.round(total / KG_PER_PHONE_CHARGE);
+  $("equiv").innerHTML = `🚗 Equivalent to driving <b>${miles.toFixed(1)} miles</b> in a gas car (or <b>${charges.toLocaleString()}</b> phone charges)`;
+
+  $("bar").innerHTML = sel.map(x => `<span title="${x.f.name}: ${fmt(x.e)} kg" style="width:${x.e/total*100}%;background:${GROUPS[x.f.group][1]}"></span>`).join("");
+
+  $("rank").innerHTML = sel.length ? sel.map(x => {
+    const p = x.e / total * 100;
+    return `<div class="rr">
+      <div class="l"><span>${x.f.name}${x.q > 1 ? " ×" + x.q : ""} <small style="color:var(--mut)">(${x.f.hallName})</small></span><span>${fmt(x.e)} kg · ${p < 1 ? "<1" : Math.round(p)}%</span></div>
+      <div class="t"><span style="width:${p}%;background:${GROUPS[x.f.group][1]}"></span></div>
+    </div>`;
+  }).join("") : `<p class="empty">Your plate is empty. Add items with the + button.</p>`;
+
+  // Lower-carbon swap suggestion within the active hall & meal
+  let hint = "";
+  if (menuData) {
+    const currentPool = menuData.halls[currentHall].meals[currentMeal] || [];
+    for (const x of sel) {
+      if (!x.f.swap) continue;
+      const alt = currentPool
+        .filter(g => g.swap === x.f.swap && g.id !== x.f.id)
+        .sort((a, b) => per(a) - per(b))[0];
+      if (alt && per(alt) < per(x.f)) {
+        const save = x.q * (per(x.f) - per(alt));
+        const saveMiles = (save / KG_PER_MILE).toFixed(1);
+        hint = `<b>Try a swap:</b> replacing <i>${x.f.name}</i> with <i>${alt.name}</i> saves about <b>${fmt(save)} kg CO₂e</b> (${Math.round(save/total*100)}%) — like skipping a <b>${saveMiles}-mile</b> car drive.`;
+        break;
+      }
+    }
+  }
+  $("swap").hidden = !hint;
+  $("swap").innerHTML = hint;
+}
+
+document.addEventListener("click", e => {
+  const b = e.target.closest("button");
+  if (!b) return;
+
+  if (b.dataset.hall) {
+    currentHall = b.dataset.hall;
+    document.querySelectorAll(".hall-tab").forEach(t => {
+      const active = t.dataset.hall === currentHall;
+      t.classList.toggle("active", active);
+      t.setAttribute("aria-selected", active);
+    });
+    renderMenu();
+    updateSummary();
+  } else if (b.dataset.meal) {
+    currentMeal = b.dataset.meal;
+    document.querySelectorAll(".meal-tab").forEach(t => {
+      const active = t.dataset.meal === currentMeal;
+      t.classList.toggle("active", active);
+      t.setAttribute("aria-selected", active);
+    });
+    renderMenu();
+    updateSummary();
+  } else if (b.dataset.id) {
+    const id = b.dataset.id;
+    plate[id] = Math.max(0, Math.min(9, (plate[id] || 0) + Number(b.dataset.d)));
+    const qEl = $("q-" + id);
+    const iEl = $("i-" + id);
+    if (qEl) qEl.textContent = plate[id];
+    if (iEl) iEl.classList.toggle("on", plate[id] > 0);
+    updateSummary();
+  } else if (b.id === "clear") {
+    plate = {};
+    renderMenu();
+    updateSummary();
+  }
+});
+
+$("filter").addEventListener("input", e => {
+  searchQuery = e.target.value.trim().toLowerCase();
+  renderMenu();
+});
+
+init();
+</script>
+</body>
+</html>

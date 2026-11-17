@@ -1,0 +1,47 @@
+{
+  "updated_at": "2026-11-17",
+  "source": "Carolina Dining Services (dining.unc.edu)",
+  "halls": {
+    "lenoir": {
+      "name": "Top of Lenoir",
+      "desc": "North Campus · Top of Lenoir",
+      "meals": {
+        "breakfast": [
+          {"id": "l_b_0", "name": "Scrambled Eggs", "station": "The Kitchen Table", "grams": 100, "factor": 3.66, "category": "Eggs", "group": "dairy", "swap": "protein"},
+          {"id": "l_b_1", "name": "Impossible™ Sausage Patty", "station": "The Kitchen Table", "grams": 45, "factor": 2.10, "category": "Plant-based alternatives", "group": "plant", "swap": "protein"},
+          {"id": "l_b_2", "name": "Waffle", "station": "Waffle Bar", "grams": 75, "factor": 1.52, "category": "Wheat/Rye (bread, pasta, baked goods)", "group": "grain", "swap": ""},
+          {"id": "l_b_3", "name": "Larry's® Coffee", "station": "Beverages", "grams": 10, "factor": 16.70, "category": "Coffee", "group": "drink", "swap": ""}
+        ],
+        "lunch": [
+          {"id": "l_l_0", "name": "Creole BBQ Chicken Thigh", "station": "Simply Prepared", "grams": 113, "factor": 4.40, "category": "Poultry", "group": "meat", "swap": "protein"},
+          {"id": "l_l_1", "name": "Red Beans & Rice", "station": "Simply Prepared", "grams": 65, "factor": 2.05, "category": "Beans and pulses (dried)", "group": "plant", "swap": "protein"},
+          {"id": "l_l_2", "name": "Roasted Brussel Sprouts", "station": "Simply Prepared", "grams": 85, "factor": 0.62, "category": "Cabbages and other Brassicas", "group": "veg", "swap": ""}
+        ],
+        "dinner": [
+          {"id": "l_d_0", "name": "Italian Style Meatball", "station": "Pasta Bar", "grams": 100, "factor": 32.50, "category": "Beef & buffalo meat", "group": "meat", "swap": "protein"},
+          {"id": "l_d_1", "name": "Whole Grain Penne", "station": "Pasta Bar", "grams": 56, "factor": 1.52, "category": "Wheat/Rye (bread, pasta, baked goods)", "group": "grain", "swap": ""}
+        ]
+      }
+    },
+    "chase": {
+      "name": "Chase Dining Hall",
+      "desc": "South Campus · Chase Hall",
+      "meals": {
+        "breakfast": [
+          {"id": "c_b_0", "name": "Spinach & Cheese Omelet", "station": "The Griddle", "grams": 130, "factor": 4.55, "category": "Eggs", "group": "dairy", "swap": "protein"},
+          {"id": "c_b_1", "name": "Tofu Florentine", "station": "The Kitchen Table", "grams": 130, "factor": 1.55, "category": "Soybeans/Tofu", "group": "plant", "swap": "protein"},
+          {"id": "c_b_2", "name": "Breakfast Potatoes", "station": "The Kitchen Table", "grams": 100, "factor": 0.55, "category": "Potatoes", "group": "grain", "swap": ""}
+        ],
+        "lunch": [
+          {"id": "c_l_0", "name": "Halal Seasoned Chicken Breast", "station": "Simply Prepared", "grams": 113, "factor": 4.40, "category": "Poultry", "group": "meat", "swap": "protein"},
+          {"id": "c_l_1", "name": "EVOO Mashed Potatoes", "station": "Simply Prepared", "grams": 130, "factor": 0.55, "category": "Potatoes", "group": "grain", "swap": ""},
+          {"id": "c_l_2", "name": "Corn on the Cob", "station": "Simply Prepared", "grams": 100, "factor": 0.55, "category": "Maize (corn)", "group": "veg", "swap": ""}
+        ],
+        "dinner": [
+          {"id": "c_d_0", "name": "Chipotle Lime Chicken", "station": "Simply Prepared Griddle", "grams": 113, "factor": 4.40, "category": "Poultry", "group": "meat", "swap": "protein"},
+          {"id": "c_d_1", "name": "Long Grain Brown Rice", "station": "Simply Prepared Griddle", "grams": 50, "factor": 2.53, "category": "Rice", "group": "grain", "swap": ""}
+        ]
+      }
+    }
+  }
+}
