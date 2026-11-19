@@ -821,22 +821,22 @@
           },
           {
             "id": "lenoir_lunch_13",
-            "name": "Roasted Broccoli",
-            "station": "Dining Station",
-            "grams": 85,
-            "factor": 0.62,
-            "category": "Cabbages and other Brassicas",
-            "group": "veg",
-            "swap": ""
-          },
-          {
-            "id": "lenoir_lunch_14",
             "name": "Pan Roasted Red Potatoes",
             "station": "Dining Station",
             "grams": 120,
             "factor": 0.55,
             "category": "Potatoes",
             "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_lunch_14",
+            "name": "Roasted Broccoli and Cauliflower",
+            "station": "Dining Station",
+            "grams": 85,
+            "factor": 0.62,
+            "category": "Cabbages and other Brassicas",
+            "group": "veg",
             "swap": ""
           },
           {
@@ -921,12 +921,12 @@
           },
           {
             "id": "lenoir_lunch_23",
-            "name": "Mediterranean Style Cheese Tortellini",
+            "name": "Kale Roasted Tomato Ravioli",
             "station": "Dining Station",
-            "grams": 45,
-            "factor": 8.69,
-            "category": "Cheese",
-            "group": "dairy",
+            "grams": 85,
+            "factor": 0.62,
+            "category": "Cabbages and other Brassicas",
+            "group": "veg",
             "swap": ""
           },
           {
@@ -1983,12 +1983,12 @@
           },
           {
             "id": "lenoir_dinner_8",
-            "name": "Roasted Butternut Squash",
+            "name": "Roasted Sweet Potatoes",
             "station": "Dining Station",
-            "grams": 90,
-            "factor": 0.5,
-            "category": "Other vegetables",
-            "group": "veg",
+            "grams": 120,
+            "factor": 0.55,
+            "category": "Potatoes",
+            "group": "grain",
             "swap": ""
           },
           {
