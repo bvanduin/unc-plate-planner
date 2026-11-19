@@ -38,10 +38,16 @@ h1{font-size:1.85rem;line-height:1.15;margin:0;letter-spacing:-.01em}
 .meal-tab.active{background:var(--carolina);color:#fff;border-color:var(--carolina)}
 .hall-meta{font-size:.82rem;color:var(--mut)}
 
+/* Presets & Toolbar */
+.preset-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0 6px}
+.preset-row b{font-size:.9rem;margin-right:2px}
+.preset-chip{border:1px solid var(--acc);background:var(--accbg);color:var(--acc);border-radius:20px;padding:5px 14px;font-size:.86rem;font-weight:600;cursor:pointer;transition:all .15s}
+.preset-chip:hover{background:var(--acc);color:var(--bg)}
 .toolbar{display:flex;justify-content:space-between;align-items:center;margin:10px 0 4px;flex-wrap:wrap;gap:8px}
 .search{padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:.9rem;min-width:220px}
 .chip{border:1px solid var(--line);background:var(--card);color:var(--mut);border-radius:20px;padding:5px 14px;font-size:.88rem;cursor:pointer}
 .chip:hover{border-color:var(--ink);color:var(--ink)}
+button:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--carolina);outline-offset:2px}
 
 /* Main Grid */
 .grid{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:start}
@@ -99,6 +105,9 @@ details p,details li{font-size:.88rem;color:var(--mut)}
   </div>
 </div>
 
+<!-- Dynamic Station-Grouped Meal Presets -->
+<div class="preset-row" id="preset-row"></div>
+
 <div class="toolbar">
   <input type="search" id="filter" class="search" placeholder="Filter dishes (e.g., chicken, tofu, eggs)…">
   <button class="chip" id="clear">Clear plate</button>
@@ -117,6 +126,7 @@ details p,details li{font-size:.88rem;color:var(--mut)}
 <summary>How we calculated this</summary>
 <p>Daily menu items are synced automatically from <b>Carolina Dining Services</b> and mapped to their primary <b>SIMAP Coolfood Pledge (2025)</b> ingredient factor (derived from Poore &amp; Nemecek, 2018).</p>
 <ul>
+<li><b>Station Meal Presets:</b> Combine one item each from key dining stations in today's active menu (e.g., main entree/griddle station + grain/side + vegetable/fruit/drink).</li>
 <li><b>Real-World Comparisons:</b> Driving distance uses the U.S. EPA Greenhouse Gas Equivalencies passenger vehicle average of <b>0.39 kg CO₂e per mile</b>. Smartphone charges use the EPA factor of <b>0.0124 kg CO₂e per full charge</b>.</li>
 <li><b>Portion Weights:</b> Estimated using standard Carolina Dining Services serving portions converted to as-purchased ingredient weight.</li>
 </ul>
@@ -137,8 +147,68 @@ const GROUPS = {
   drink:["Beverages","#5f8aa6"]
 };
 
+// Station-grouped preset definitions: each slot matches an item in today's menu by
+// optional station substring, group, and preferred keywords.
+const STATION_PRESETS = {
+  breakfast: [
+    {
+      label: "Kitchen Table + Waffle Bar",
+      slots: [
+        { station: "kitchen table", group: "dairy", keywords: ["egg", "omelet", "sausage", "bacon"] },
+        { station: "waffle", group: "grain", keywords: ["waffle", "pancake", "toast", "biscuit"] },
+        { group: "fruit", keywords: ["berry", "berries", "fruit", "orange", "apple"] },
+        { group: "drink", keywords: ["coffee", "milk"] }
+      ]
+    },
+    {
+      label: "Plant-Forward Breakfast",
+      slots: [
+        { group: "plant", keywords: ["tofu", "impossible", "plant", "bean"] },
+        { group: "grain", keywords: ["oat", "grit", "potato", "hash", "waffle"] },
+        { group: "fruit", keywords: ["melon", "berry", "fruit", "apple"] }
+      ]
+    }
+  ],
+  lunch: [
+    {
+      label: "Main Line + Sides & Greens",
+      slots: [
+        { station: "simply prepared", group: "meat", keywords: ["chicken", "fish", "turkey", "beef", "pork"] },
+        { group: "grain", keywords: ["rice", "potato", "mash", "pasta", "penne"] },
+        { group: "veg", keywords: ["salad", "greens", "broccoli", "brussel", "corn", "bean"] }
+      ]
+    },
+    {
+      label: "Plant-Forward Lunch",
+      slots: [
+        { group: "plant", keywords: ["bean", "tofu", "lentil", "chickpea", "eggplant", "plant"] },
+        { group: "grain", keywords: ["rice", "pasta", "potato", "grain"] },
+        { group: "veg", keywords: ["salad", "greens", "vegetable", "squash", "brussel"] }
+      ]
+    }
+  ],
+  dinner: [
+    {
+      label: "Entrée Station + Side & Veg",
+      slots: [
+        { group: "meat", keywords: ["chicken", "meatball", "beef", "fish", "pork"] },
+        { group: "grain", keywords: ["pasta", "penne", "rice", "potato"] },
+        { group: "veg", keywords: ["vegetable", "greens", "salad", "brussel", "squash", "corn"] }
+      ]
+    },
+    {
+      label: "Lighter Plant & Grain Plate",
+      slots: [
+        { group: "plant", keywords: ["bean", "tofu", "plant", "rice"] },
+        { group: "grain", keywords: ["rice", "pasta", "potato"] },
+        { group: "veg", keywords: ["vegetable", "salad", "greens", "broccoli"] }
+      ]
+    }
+  ]
+};
+
 let menuData = null;
-let itemIndex = {}; // id -> item object
+let itemIndex = {};
 let currentHall = "lenoir";
 let currentMeal = "breakfast";
 let searchQuery = "";
@@ -150,6 +220,55 @@ const fmt = x => x.toFixed(2);
 
 $("legend").innerHTML = Object.values(GROUPS).map(g=>`<span><i style="background:${g[1]}"></i>${g[0]}</span>`).join("");
 
+function pickItemForSlot(pool, slot, usedIds) {
+  const candidates = pool.filter(it => !usedIds.has(it.id));
+  if (!candidates.length) return null;
+
+  const matchesStation = it => !slot.station || it.station.toLowerCase().includes(slot.station);
+  const matchesGroup = it => !slot.group || it.group === slot.group;
+  const matchesKeyword = it => !slot.keywords || slot.keywords.some(kw => it.name.toLowerCase().includes(kw));
+
+  // 1. Best match: station + group + keyword
+  let hit = candidates.find(it => matchesStation(it) && matchesGroup(it) && matchesKeyword(it));
+  // 2. Group + keyword in active meal
+  if (!hit) hit = candidates.find(it => matchesGroup(it) && matchesKeyword(it));
+  // 3. Station match
+  if (!hit && slot.station) hit = candidates.find(it => matchesStation(it));
+  // 4. Group match
+  if (!hit && slot.group) hit = candidates.find(it => matchesGroup(it));
+
+  return hit || null;
+}
+
+function applyStationPreset(presetIdx) {
+  if (!menuData) return;
+  const preset = STATION_PRESETS[currentMeal][presetIdx];
+  if (!preset) return;
+
+  const pool = menuData.halls[currentHall].meals[currentMeal] || [];
+  const nextPlate = {};
+  const usedIds = new Set();
+
+  for (const slot of preset.slots) {
+    const chosen = pickItemForSlot(pool, slot, usedIds);
+    if (chosen) {
+      nextPlate[chosen.id] = 1;
+      usedIds.add(chosen.id);
+    }
+  }
+
+  plate = nextPlate;
+  renderMenu();
+  updateSummary();
+}
+
+function renderPresets() {
+  const presets = STATION_PRESETS[currentMeal] || [];
+  $("preset-row").innerHTML =
+    `<b>Station meal presets:</b>` +
+    presets.map((p, idx) => `<button class="preset-chip" data-preset="${idx}" title="Build a meal from key ${currentMeal} stations">${p.label}</button>`).join("");
+}
+
 async function init() {
   try {
     const res = await fetch(`./menu_data.json?v=${Date.now()}`);
@@ -157,7 +276,6 @@ async function init() {
     menuData = await res.json();
     $("sync-date").textContent = `CDS Menu Date: ${menuData.updated_at}`;
 
-    // Build flat lookup map across all halls and meals
     itemIndex = {};
     for (const [hallKey, hall] of Object.entries(menuData.halls)) {
       for (const [mealKey, items] of Object.entries(hall.meals)) {
@@ -166,6 +284,7 @@ async function init() {
         }
       }
     }
+    renderPresets();
     renderMenu();
     updateSummary();
   } catch (err) {
@@ -231,9 +350,8 @@ function updateSummary() {
       <div class="l"><span>${x.f.name}${x.q > 1 ? " ×" + x.q : ""} <small style="color:var(--mut)">(${x.f.hallName})</small></span><span>${fmt(x.e)} kg · ${p < 1 ? "<1" : Math.round(p)}%</span></div>
       <div class="t"><span style="width:${p}%;background:${GROUPS[x.f.group][1]}"></span></div>
     </div>`;
-  }).join("") : `<p class="empty">Your plate is empty. Add items with the + button.</p>`;
+  }).join("") : `<p class="empty">Your plate is empty. Add items with the + button or pick a station preset above.</p>`;
 
-  // Lower-carbon swap suggestion within the active hall & meal
   let hint = "";
   if (menuData) {
     const currentPool = menuData.halls[currentHall].meals[currentMeal] || [];
@@ -265,6 +383,7 @@ document.addEventListener("click", e => {
       t.classList.toggle("active", active);
       t.setAttribute("aria-selected", active);
     });
+    renderPresets();
     renderMenu();
     updateSummary();
   } else if (b.dataset.meal) {
@@ -274,8 +393,11 @@ document.addEventListener("click", e => {
       t.classList.toggle("active", active);
       t.setAttribute("aria-selected", active);
     });
+    renderPresets();
     renderMenu();
     updateSummary();
+  } else if (b.dataset.preset !== undefined) {
+    applyStationPreset(Number(b.dataset.preset));
   } else if (b.dataset.id) {
     const id = b.dataset.id;
     plate[id] = Math.max(0, Math.min(9, (plate[id] || 0) + Number(b.dataset.d)));
