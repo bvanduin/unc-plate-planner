@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-21",
+  "updated_at": "2026-11-22",
   "source": "Carolina Dining Services (dining.unc.edu)",
   "halls": {
     "lenoir": {
@@ -8,7 +8,1108 @@
       "meals": {
         "breakfast": [],
         "lunch": [],
-        "dinner": []
+        "dinner": [
+          {
+            "id": "lenoir_dinner_0",
+            "name": "Waffle",
+            "station": "Dining Station",
+            "grams": 70,
+            "factor": 1.52,
+            "category": "Wheat/Rye (bread, pasta, baked goods)",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_1",
+            "name": "Apple Compote",
+            "station": "Dining Station",
+            "grams": 130,
+            "factor": 0.36,
+            "category": "Apples",
+            "group": "fruit",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_2",
+            "name": "Blueberry Compote",
+            "station": "Dining Station",
+            "grams": 75,
+            "factor": 1.65,
+            "category": "Berries",
+            "group": "fruit",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_3",
+            "name": "Strawberry Compote",
+            "station": "Dining Station",
+            "grams": 75,
+            "factor": 1.65,
+            "category": "Berries",
+            "group": "fruit",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_4",
+            "name": "Sauteed Spinach",
+            "station": "Dining Station",
+            "grams": 90,
+            "factor": 0.5,
+            "category": "Other vegetables",
+            "group": "veg",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_5",
+            "name": "Corn on the Cob",
+            "station": "Dining Station",
+            "grams": 100,
+            "factor": 0.55,
+            "category": "Maize (corn)",
+            "group": "veg",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_6",
+            "name": "Ranch Yukon Mashed Potatoes",
+            "station": "Dining Station",
+            "grams": 120,
+            "factor": 0.55,
+            "category": "Potatoes",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_7",
+            "name": "Plant-Based Cavatappi Alfredo",
+            "station": "Dining Station",
+            "grams": 95,
+            "factor": 2.05,
+            "category": "Plant-based alternatives",
+            "group": "plant",
+            "swap": "protein"
+          },
+          {
+            "id": "lenoir_dinner_8",
+            "name": "Barley and Vegetable Ragout",
+            "station": "Dining Station",
+            "grams": 90,
+            "factor": 0.5,
+            "category": "Other vegetables",
+            "group": "veg",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_9",
+            "name": "Roasted Eggplant",
+            "station": "Dining Station",
+            "grams": 90,
+            "factor": 0.5,
+            "category": "Other vegetables",
+            "group": "veg",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_10",
+            "name": "Roast Beef Sirloin",
+            "station": "Dining Station",
+            "grams": 113,
+            "factor": 41.35,
+            "category": "Beef & buffalo meat",
+            "group": "meat",
+            "swap": "protein"
+          },
+          {
+            "id": "lenoir_dinner_11",
+            "name": "Montreal Potatoes",
+            "station": "Dining Station",
+            "grams": 120,
+            "factor": 0.55,
+            "category": "Potatoes",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_12",
+            "name": "Roasted Carrot",
+            "station": "Dining Station",
+            "grams": 85,
+            "factor": 0.31,
+            "category": "Root Vegetables",
+            "group": "veg",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_13",
+            "name": "Steamed Broccoli",
+            "station": "Dining Station",
+            "grams": 85,
+            "factor": 0.62,
+            "category": "Cabbages and other Brassicas",
+            "group": "veg",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_14",
+            "name": "Strawberry Cream Cheese",
+            "station": "Dining Station",
+            "grams": 45,
+            "factor": 8.69,
+            "category": "Cheese",
+            "group": "dairy",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_15",
+            "name": "Housemade Veggie Cream Cheese",
+            "station": "Dining Station",
+            "grams": 45,
+            "factor": 8.69,
+            "category": "Cheese",
+            "group": "dairy",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_16",
+            "name": "Cream Cheese",
+            "station": "Dining Station",
+            "grams": 45,
+            "factor": 8.69,
+            "category": "Cheese",
+            "group": "dairy",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_17",
+            "name": "Hot Diced Chicken",
+            "station": "Dining Station",
+            "grams": 113,
+            "factor": 4.4,
+            "category": "Poultry",
+            "group": "meat",
+            "swap": "protein"
+          },
+          {
+            "id": "lenoir_dinner_18",
+            "name": "Roasted Squash and Zucchini",
+            "station": "Dining Station",
+            "grams": 90,
+            "factor": 0.5,
+            "category": "Other vegetables",
+            "group": "veg",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_19",
+            "name": "Whole Grain Penne",
+            "station": "Dining Station",
+            "grams": 70,
+            "factor": 1.52,
+            "category": "Wheat/Rye (bread, pasta, baked goods)",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_20",
+            "name": "Pasta Noodles",
+            "station": "Dining Station",
+            "grams": 70,
+            "factor": 1.52,
+            "category": "Wheat/Rye (bread, pasta, baked goods)",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_21",
+            "name": "Penne Pasta (Made Without Gluten)",
+            "station": "Dining Station",
+            "grams": 70,
+            "factor": 1.52,
+            "category": "Wheat/Rye (bread, pasta, baked goods)",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_22",
+            "name": "Soy Nuggets",
+            "station": "Dining Station",
+            "grams": 113,
+            "factor": 1.75,
+            "category": "Soybeans/Tofu",
+            "group": "plant",
+            "swap": "protein"
+          },
+          {
+            "id": "lenoir_dinner_23",
+            "name": "Chicken Alla Vodka",
+            "station": "Dining Station",
+            "grams": 113,
+            "factor": 4.4,
+            "category": "Poultry",
+            "group": "meat",
+            "swap": "protein"
+          },
+          {
+            "id": "lenoir_dinner_24",
+            "name": "Cheese Pizza",
+            "station": "Dining Station",
+            "grams": 45,
+            "factor": 8.69,
+            "category": "Cheese",
+            "group": "dairy",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_25",
+            "name": "Pepperoni Pizza",
+            "station": "Dining Station",
+            "grams": 85,
+            "factor": 9.83,
+            "category": "Pork (pig meat)",
+            "group": "meat",
+            "swap": "protein"
+          },
+          {
+            "id": "lenoir_dinner_26",
+            "name": "Cheese Bread",
+            "station": "Dining Station",
+            "grams": 45,
+            "factor": 8.69,
+            "category": "Cheese",
+            "group": "dairy",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_27",
+            "name": "Vegan Cheese Pizza",
+            "station": "Dining Station",
+            "grams": 45,
+            "factor": 8.69,
+            "category": "Cheese",
+            "group": "dairy",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_28",
+            "name": "BBQ Chicken and Bacon Pizza",
+            "station": "Dining Station",
+            "grams": 85,
+            "factor": 9.83,
+            "category": "Pork (pig meat)",
+            "group": "meat",
+            "swap": "protein"
+          },
+          {
+            "id": "lenoir_dinner_29",
+            "name": "Poke Tuna",
+            "station": "Dining Station",
+            "grams": 113,
+            "factor": 4.98,
+            "category": "Fish (finfish)",
+            "group": "meat",
+            "swap": "protein"
+          },
+          {
+            "id": "lenoir_dinner_30",
+            "name": "Crispy Tofu",
+            "station": "Dining Station",
+            "grams": 113,
+            "factor": 1.75,
+            "category": "Soybeans/Tofu",
+            "group": "plant",
+            "swap": "protein"
+          },
+          {
+            "id": "lenoir_dinner_31",
+            "name": "Green Cabbage",
+            "station": "Dining Station",
+            "grams": 85,
+            "factor": 0.62,
+            "category": "Cabbages and other Brassicas",
+            "group": "veg",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_32",
+            "name": "Edamame",
+            "station": "Dining Station",
+            "grams": 113,
+            "factor": 1.75,
+            "category": "Soybeans/Tofu",
+            "group": "plant",
+            "swap": "protein"
+          },
+          {
+            "id": "lenoir_dinner_33",
+            "name": "Brown Rice",
+            "station": "Dining Station",
+            "grams": 55,
+            "factor": 2.53,
+            "category": "Rice",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_34",
+            "name": "Barley Vegetable Soup",
+            "station": "Dining Station",
+            "grams": 90,
+            "factor": 0.5,
+            "category": "Other vegetables",
+            "group": "veg",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_35",
+            "name": "Classic Cheeseburger",
+            "station": "Dining Station",
+            "grams": 113,
+            "factor": 41.35,
+            "category": "Beef & buffalo meat",
+            "group": "meat",
+            "swap": "protein"
+          },
+          {
+            "id": "lenoir_dinner_36",
+            "name": "Black Bean Burger Patty",
+            "station": "Dining Station",
+            "grams": 113,
+            "factor": 41.35,
+            "category": "Beef & buffalo meat",
+            "group": "meat",
+            "swap": "protein"
+          },
+          {
+            "id": "lenoir_dinner_37",
+            "name": "Twister Fries",
+            "station": "Dining Station",
+            "grams": 120,
+            "factor": 0.55,
+            "category": "Potatoes",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_38",
+            "name": "Sliced Cheddar Cheese",
+            "station": "Dining Station",
+            "grams": 45,
+            "factor": 8.69,
+            "category": "Cheese",
+            "group": "dairy",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_39",
+            "name": "Vegan American Sliced Cheese",
+            "station": "Dining Station",
+            "grams": 45,
+            "factor": 8.69,
+            "category": "Cheese",
+            "group": "dairy",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_40",
+            "name": "Veggie Toppings",
+            "station": "Dining Station",
+            "grams": 90,
+            "factor": 0.5,
+            "category": "Other vegetables",
+            "group": "veg",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_41",
+            "name": "Spring Salad Mix",
+            "station": "Dining Station",
+            "grams": 90,
+            "factor": 0.5,
+            "category": "Other vegetables",
+            "group": "veg",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_42",
+            "name": "Sliced Turkey",
+            "station": "Dining Station",
+            "grams": 113,
+            "factor": 4.4,
+            "category": "Poultry",
+            "group": "meat",
+            "swap": "protein"
+          },
+          {
+            "id": "lenoir_dinner_43",
+            "name": "Orange Slices",
+            "station": "Dining Station",
+            "grams": 90,
+            "factor": 0.39,
+            "category": "Citrus Fruit",
+            "group": "fruit",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_44",
+            "name": "Plain Greek Yogurt",
+            "station": "Dining Station",
+            "grams": 170,
+            "factor": 2.93,
+            "category": "Yogurt",
+            "group": "dairy",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_45",
+            "name": "Baby Spinach",
+            "station": "Dining Station",
+            "grams": 90,
+            "factor": 0.5,
+            "category": "Other vegetables",
+            "group": "veg",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_46",
+            "name": "Grape Tomatoes",
+            "station": "Dining Station",
+            "grams": 90,
+            "factor": 0.69,
+            "category": "Tomatoes",
+            "group": "veg",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_47",
+            "name": "Banana Peppers",
+            "station": "Dining Station",
+            "grams": 110,
+            "factor": 0.71,
+            "category": "Bananas",
+            "group": "fruit",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_48",
+            "name": "Diced Chicken",
+            "station": "Dining Station",
+            "grams": 113,
+            "factor": 4.4,
+            "category": "Poultry",
+            "group": "meat",
+            "swap": "protein"
+          },
+          {
+            "id": "lenoir_dinner_49",
+            "name": "Bacon Pieces",
+            "station": "Dining Station",
+            "grams": 85,
+            "factor": 9.83,
+            "category": "Pork (pig meat)",
+            "group": "meat",
+            "swap": "protein"
+          },
+          {
+            "id": "lenoir_dinner_50",
+            "name": "Tofu",
+            "station": "Dining Station",
+            "grams": 113,
+            "factor": 1.75,
+            "category": "Soybeans/Tofu",
+            "group": "plant",
+            "swap": "protein"
+          },
+          {
+            "id": "lenoir_dinner_51",
+            "name": "Feta Cheese Crumbles",
+            "station": "Dining Station",
+            "grams": 45,
+            "factor": 8.69,
+            "category": "Cheese",
+            "group": "dairy",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_52",
+            "name": "Cantaloupe",
+            "station": "Dining Station",
+            "grams": 140,
+            "factor": 0.45,
+            "category": "Melons & Tropical Fruit",
+            "group": "fruit",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_53",
+            "name": "Honeydew Melon",
+            "station": "Dining Station",
+            "grams": 140,
+            "factor": 0.45,
+            "category": "Melons & Tropical Fruit",
+            "group": "fruit",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_54",
+            "name": "Diced Pineapple",
+            "station": "Dining Station",
+            "grams": 140,
+            "factor": 0.45,
+            "category": "Melons & Tropical Fruit",
+            "group": "fruit",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_55",
+            "name": "Cage-Free Hard-Boiled Egg",
+            "station": "Dining Station",
+            "grams": 100,
+            "factor": 3.66,
+            "category": "Eggs",
+            "group": "dairy",
+            "swap": "protein"
+          },
+          {
+            "id": "lenoir_dinner_56",
+            "name": "Shredded Cheddar Cheese",
+            "station": "Dining Station",
+            "grams": 45,
+            "factor": 8.69,
+            "category": "Cheese",
+            "group": "dairy",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_57",
+            "name": "Applesauce",
+            "station": "Dining Station",
+            "grams": 130,
+            "factor": 0.36,
+            "category": "Apples",
+            "group": "fruit",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_58",
+            "name": "Cottage Cheese",
+            "station": "Dining Station",
+            "grams": 45,
+            "factor": 8.69,
+            "category": "Cheese",
+            "group": "dairy",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_59",
+            "name": "Potato Chips",
+            "station": "Dining Station",
+            "grams": 120,
+            "factor": 0.55,
+            "category": "Potatoes",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_60",
+            "name": "Provolone Cheese",
+            "station": "Dining Station",
+            "grams": 45,
+            "factor": 8.69,
+            "category": "Cheese",
+            "group": "dairy",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_61",
+            "name": "Sundried Tomato Basil Wrap",
+            "station": "Dining Station",
+            "grams": 90,
+            "factor": 0.69,
+            "category": "Tomatoes",
+            "group": "veg",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_62",
+            "name": "Spinach Wrap",
+            "station": "Dining Station",
+            "grams": 90,
+            "factor": 0.5,
+            "category": "Other vegetables",
+            "group": "veg",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_63",
+            "name": "Sliced Ham",
+            "station": "Dining Station",
+            "grams": 85,
+            "factor": 9.83,
+            "category": "Pork (pig meat)",
+            "group": "meat",
+            "swap": "protein"
+          },
+          {
+            "id": "lenoir_dinner_64",
+            "name": "Sliced Roast Beef",
+            "station": "Dining Station",
+            "grams": 113,
+            "factor": 41.35,
+            "category": "Beef & buffalo meat",
+            "group": "meat",
+            "swap": "protein"
+          },
+          {
+            "id": "lenoir_dinner_65",
+            "name": "Tuna Salad",
+            "station": "Dining Station",
+            "grams": 113,
+            "factor": 4.98,
+            "category": "Fish (finfish)",
+            "group": "meat",
+            "swap": "protein"
+          },
+          {
+            "id": "lenoir_dinner_66",
+            "name": "Chunky Chicken Salad",
+            "station": "Dining Station",
+            "grams": 113,
+            "factor": 4.4,
+            "category": "Poultry",
+            "group": "meat",
+            "swap": "protein"
+          },
+          {
+            "id": "lenoir_dinner_67",
+            "name": "American Cheese",
+            "station": "Dining Station",
+            "grams": 45,
+            "factor": 8.69,
+            "category": "Cheese",
+            "group": "dairy",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_68",
+            "name": "Cheddar Cheese",
+            "station": "Dining Station",
+            "grams": 45,
+            "factor": 8.69,
+            "category": "Cheese",
+            "group": "dairy",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_69",
+            "name": "Swiss Cheese",
+            "station": "Dining Station",
+            "grams": 45,
+            "factor": 8.69,
+            "category": "Cheese",
+            "group": "dairy",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_70",
+            "name": "Tomatoes",
+            "station": "Dining Station",
+            "grams": 90,
+            "factor": 0.69,
+            "category": "Tomatoes",
+            "group": "veg",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_71",
+            "name": "Rye Bread Slice",
+            "station": "Dining Station",
+            "grams": 70,
+            "factor": 1.52,
+            "category": "Wheat/Rye (bread, pasta, baked goods)",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_72",
+            "name": "Hoagie Roll",
+            "station": "Dining Station",
+            "grams": 55,
+            "factor": 2.53,
+            "category": "Rice",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_73",
+            "name": "Wheat Bread Slice",
+            "station": "Dining Station",
+            "grams": 70,
+            "factor": 1.52,
+            "category": "Wheat/Rye (bread, pasta, baked goods)",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_74",
+            "name": "Udi's\u00ae Multigrain Bread",
+            "station": "Dining Station",
+            "grams": 70,
+            "factor": 1.52,
+            "category": "Wheat/Rye (bread, pasta, baked goods)",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_75",
+            "name": "Udi's\u00ae White Bread",
+            "station": "Dining Station",
+            "grams": 70,
+            "factor": 1.52,
+            "category": "Wheat/Rye (bread, pasta, baked goods)",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_76",
+            "name": "Oats and Honey Granola",
+            "station": "Dining Station",
+            "grams": 45,
+            "factor": 2.3,
+            "category": "Oats / Maize",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_77",
+            "name": "Cinnamon Toast Crunch\u2122",
+            "station": "Dining Station",
+            "grams": 70,
+            "factor": 1.52,
+            "category": "Wheat/Rye (bread, pasta, baked goods)",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_78",
+            "name": "Apple Jacks\u00ae",
+            "station": "Dining Station",
+            "grams": 130,
+            "factor": 0.36,
+            "category": "Apples",
+            "group": "fruit",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_79",
+            "name": "White Bread",
+            "station": "Dining Station",
+            "grams": 70,
+            "factor": 1.52,
+            "category": "Wheat/Rye (bread, pasta, baked goods)",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_80",
+            "name": "Multigrain Bagel",
+            "station": "Dining Station",
+            "grams": 70,
+            "factor": 1.52,
+            "category": "Wheat/Rye (bread, pasta, baked goods)",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_81",
+            "name": "Blueberry Bagel",
+            "station": "Dining Station",
+            "grams": 70,
+            "factor": 1.52,
+            "category": "Wheat/Rye (bread, pasta, baked goods)",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_82",
+            "name": "Poppy Seed Bagel",
+            "station": "Dining Station",
+            "grams": 70,
+            "factor": 1.52,
+            "category": "Wheat/Rye (bread, pasta, baked goods)",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_83",
+            "name": "Sesame Bagel",
+            "station": "Dining Station",
+            "grams": 70,
+            "factor": 1.52,
+            "category": "Wheat/Rye (bread, pasta, baked goods)",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_84",
+            "name": "Whole Wheat Bagel",
+            "station": "Dining Station",
+            "grams": 70,
+            "factor": 1.52,
+            "category": "Wheat/Rye (bread, pasta, baked goods)",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_85",
+            "name": "Everything Bagel",
+            "station": "Dining Station",
+            "grams": 70,
+            "factor": 1.52,
+            "category": "Wheat/Rye (bread, pasta, baked goods)",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_86",
+            "name": "French Toast Bagel",
+            "station": "Dining Station",
+            "grams": 70,
+            "factor": 1.52,
+            "category": "Wheat/Rye (bread, pasta, baked goods)",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_87",
+            "name": "Cinnamon Raisin Bagel",
+            "station": "Dining Station",
+            "grams": 70,
+            "factor": 1.52,
+            "category": "Wheat/Rye (bread, pasta, baked goods)",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_88",
+            "name": "Cheddar Jalapeno Bagel",
+            "station": "Dining Station",
+            "grams": 45,
+            "factor": 8.69,
+            "category": "Cheese",
+            "group": "dairy",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_89",
+            "name": "Plain Bagel",
+            "station": "Dining Station",
+            "grams": 70,
+            "factor": 1.52,
+            "category": "Wheat/Rye (bread, pasta, baked goods)",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_90",
+            "name": "Bob's Red Mill\u00ae Gluten Free Oats",
+            "station": "Dining Station",
+            "grams": 45,
+            "factor": 2.3,
+            "category": "Oats / Maize",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_91",
+            "name": "Made Good\u00ae Organic Soft Baked Blueberry Oat Bars",
+            "station": "Dining Station",
+            "grams": 75,
+            "factor": 1.65,
+            "category": "Berries",
+            "group": "fruit",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_92",
+            "name": "Made Good\u00ae Organic Crunchy Oats and Dark Chocolate Squares",
+            "station": "Dining Station",
+            "grams": 45,
+            "factor": 2.3,
+            "category": "Oats / Maize",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_93",
+            "name": "That's It\u00ae Apple & Mango Fruit Bar",
+            "station": "Dining Station",
+            "grams": 130,
+            "factor": 0.36,
+            "category": "Apples",
+            "group": "fruit",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_94",
+            "name": "That's It\u00ae Apple & Cherry Fruit Bar",
+            "station": "Dining Station",
+            "grams": 130,
+            "factor": 0.36,
+            "category": "Apples",
+            "group": "fruit",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_95",
+            "name": "That's It\u00ae Apple & Blueberry Fruit Bar",
+            "station": "Dining Station",
+            "grams": 75,
+            "factor": 1.65,
+            "category": "Berries",
+            "group": "fruit",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_96",
+            "name": "Bob's Red Mill\u00ae GF Apple & Cinnamon Oats",
+            "station": "Dining Station",
+            "grams": 45,
+            "factor": 2.3,
+            "category": "Oats / Maize",
+            "group": "grain",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_97",
+            "name": "Oatmilk",
+            "station": "Dining Station",
+            "grams": 245,
+            "factor": 0.89,
+            "category": "Oat milk",
+            "group": "dairy",
+            "swap": "milk"
+          },
+          {
+            "id": "lenoir_dinner_98",
+            "name": "Whole Milk",
+            "station": "Dining Station",
+            "grams": 245,
+            "factor": 2.17,
+            "category": "Milk (cow's milk)",
+            "group": "dairy",
+            "swap": "milk"
+          },
+          {
+            "id": "lenoir_dinner_99",
+            "name": "Soymilk",
+            "station": "Dining Station",
+            "grams": 245,
+            "factor": 0.48,
+            "category": "Soy milk",
+            "group": "dairy",
+            "swap": "milk"
+          },
+          {
+            "id": "lenoir_dinner_100",
+            "name": "Skim Milk",
+            "station": "Dining Station",
+            "grams": 245,
+            "factor": 2.17,
+            "category": "Milk (cow's milk)",
+            "group": "dairy",
+            "swap": "milk"
+          },
+          {
+            "id": "lenoir_dinner_101",
+            "name": "2% Reduced Fat Milk",
+            "station": "Dining Station",
+            "grams": 245,
+            "factor": 2.17,
+            "category": "Milk (cow's milk)",
+            "group": "dairy",
+            "swap": "milk"
+          },
+          {
+            "id": "lenoir_dinner_102",
+            "name": "1% Chocolate Milk",
+            "station": "Dining Station",
+            "grams": 245,
+            "factor": 2.17,
+            "category": "Milk (cow's milk)",
+            "group": "dairy",
+            "swap": "milk"
+          },
+          {
+            "id": "lenoir_dinner_103",
+            "name": "Larry's\u00ae Decaf Coffee",
+            "station": "Dining Station",
+            "grams": 10,
+            "factor": 16.7,
+            "category": "Coffee",
+            "group": "drink",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_104",
+            "name": "Larry's\u00ae Coffee",
+            "station": "Dining Station",
+            "grams": 10,
+            "factor": 16.7,
+            "category": "Coffee",
+            "group": "drink",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_105",
+            "name": "100% Apple Juice",
+            "station": "Dining Station",
+            "grams": 130,
+            "factor": 0.36,
+            "category": "Apples",
+            "group": "fruit",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_106",
+            "name": "100% Orange Juice",
+            "station": "Dining Station",
+            "grams": 90,
+            "factor": 0.39,
+            "category": "Citrus Fruit",
+            "group": "fruit",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_107",
+            "name": "Strawberry Kiwi Juice",
+            "station": "Dining Station",
+            "grams": 75,
+            "factor": 1.65,
+            "category": "Berries",
+            "group": "fruit",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_108",
+            "name": "Gatorade\u00ae Orange",
+            "station": "Dining Station",
+            "grams": 90,
+            "factor": 0.39,
+            "category": "Citrus Fruit",
+            "group": "fruit",
+            "swap": ""
+          },
+          {
+            "id": "lenoir_dinner_109",
+            "name": "Sunkist\u00ae Orange",
+            "station": "Dining Station",
+            "grams": 90,
+            "factor": 0.39,
+            "category": "Citrus Fruit",
+            "group": "fruit",
+            "swap": ""
+          }
+        ]
       }
     },
     "chase": {
@@ -40,16 +1141,6 @@
           },
           {
             "id": "chase_dinner_2",
-            "name": "Vegan Apple Cranberry Raisin Crisp",
-            "station": "Dining Station",
-            "grams": 130,
-            "factor": 0.36,
-            "category": "Apples",
-            "group": "fruit",
-            "swap": ""
-          },
-          {
-            "id": "chase_dinner_3",
             "name": "Rice Krispie Treats",
             "station": "Dining Station",
             "grams": 55,
@@ -59,27 +1150,7 @@
             "swap": ""
           },
           {
-            "id": "chase_dinner_4",
-            "name": "Strawberry Cream Cheese",
-            "station": "Dining Station",
-            "grams": 45,
-            "factor": 8.69,
-            "category": "Cheese",
-            "group": "dairy",
-            "swap": ""
-          },
-          {
-            "id": "chase_dinner_5",
-            "name": "Housemade Veggie Cream Cheese",
-            "station": "Dining Station",
-            "grams": 45,
-            "factor": 8.69,
-            "category": "Cheese",
-            "group": "dairy",
-            "swap": ""
-          },
-          {
-            "id": "chase_dinner_6",
+            "id": "chase_dinner_3",
             "name": "Cream Cheese",
             "station": "Dining Station",
             "grams": 45,
@@ -89,47 +1160,57 @@
             "swap": ""
           },
           {
-            "id": "chase_dinner_7",
-            "name": "Turkey Chili",
+            "id": "chase_dinner_4",
+            "name": "Housemade Veggie Cream Cheese",
+            "station": "Dining Station",
+            "grams": 45,
+            "factor": 8.69,
+            "category": "Cheese",
+            "group": "dairy",
+            "swap": ""
+          },
+          {
+            "id": "chase_dinner_5",
+            "name": "Strawberry Cream Cheese",
+            "station": "Dining Station",
+            "grams": 45,
+            "factor": 8.69,
+            "category": "Cheese",
+            "group": "dairy",
+            "swap": ""
+          },
+          {
+            "id": "chase_dinner_6",
+            "name": "Mediterranean Beef Roast",
             "station": "Dining Station",
             "grams": 113,
-            "factor": 4.4,
-            "category": "Poultry",
+            "factor": 41.35,
+            "category": "Beef & buffalo meat",
             "group": "meat",
             "swap": "protein"
           },
           {
-            "id": "chase_dinner_8",
-            "name": "Baked Sweet Potato",
+            "id": "chase_dinner_7",
+            "name": "Cilantro Lime Rice",
             "station": "Dining Station",
-            "grams": 120,
-            "factor": 0.55,
-            "category": "Potatoes",
+            "grams": 55,
+            "factor": 2.53,
+            "category": "Rice",
             "group": "grain",
             "swap": ""
           },
           {
+            "id": "chase_dinner_8",
+            "name": "Roasted Corn",
+            "station": "Dining Station",
+            "grams": 100,
+            "factor": 0.55,
+            "category": "Maize (corn)",
+            "group": "veg",
+            "swap": ""
+          },
+          {
             "id": "chase_dinner_9",
-            "name": "Roasted Yellow Squash",
-            "station": "Dining Station",
-            "grams": 90,
-            "factor": 0.5,
-            "category": "Other vegetables",
-            "group": "veg",
-            "swap": ""
-          },
-          {
-            "id": "chase_dinner_10",
-            "name": "Seasoned Broccoli",
-            "station": "Dining Station",
-            "grams": 85,
-            "factor": 0.62,
-            "category": "Cabbages and other Brassicas",
-            "group": "veg",
-            "swap": ""
-          },
-          {
-            "id": "chase_dinner_11",
             "name": "Penne Pasta (Made Without Gluten)",
             "station": "Dining Station",
             "grams": 70,
@@ -139,8 +1220,8 @@
             "swap": ""
           },
           {
-            "id": "chase_dinner_12",
-            "name": "Korean Style BBQ Chicken Thighs",
+            "id": "chase_dinner_10",
+            "name": "Chicken Parmesan",
             "station": "Dining Station",
             "grams": 113,
             "factor": 4.4,
@@ -149,18 +1230,28 @@
             "swap": "protein"
           },
           {
-            "id": "chase_dinner_13",
-            "name": "Basmati Scallion Rice",
+            "id": "chase_dinner_11",
+            "name": "Parsley Penne",
             "station": "Dining Station",
-            "grams": 55,
-            "factor": 2.53,
-            "category": "Rice",
+            "grams": 70,
+            "factor": 1.52,
+            "category": "Wheat/Rye (bread, pasta, baked goods)",
             "group": "grain",
             "swap": ""
           },
           {
-            "id": "chase_dinner_14",
-            "name": "Turkey Corn Dogs",
+            "id": "chase_dinner_12",
+            "name": "Steamed Broccoli",
+            "station": "Dining Station",
+            "grams": 85,
+            "factor": 0.62,
+            "category": "Cabbages and other Brassicas",
+            "group": "veg",
+            "swap": ""
+          },
+          {
+            "id": "chase_dinner_13",
+            "name": "Buffalo Crispy Baked Chicken Sandwich",
             "station": "Dining Station",
             "grams": 113,
             "factor": 4.4,
@@ -169,7 +1260,7 @@
             "swap": "protein"
           },
           {
-            "id": "chase_dinner_15",
+            "id": "chase_dinner_14",
             "name": "Grilled Cheese Sandwich",
             "station": "Dining Station",
             "grams": 45,
@@ -179,7 +1270,7 @@
             "swap": ""
           },
           {
-            "id": "chase_dinner_16",
+            "id": "chase_dinner_15",
             "name": "Black Bean Burger Patty",
             "station": "Dining Station",
             "grams": 113,
@@ -189,7 +1280,7 @@
             "swap": "protein"
           },
           {
-            "id": "chase_dinner_17",
+            "id": "chase_dinner_16",
             "name": "Shoestring Fries",
             "station": "Dining Station",
             "grams": 120,
@@ -199,13 +1290,23 @@
             "swap": ""
           },
           {
-            "id": "chase_dinner_18",
+            "id": "chase_dinner_17",
             "name": "Veggie Toppings",
             "station": "Dining Station",
             "grams": 90,
             "factor": 0.5,
             "category": "Other vegetables",
             "group": "veg",
+            "swap": ""
+          },
+          {
+            "id": "chase_dinner_18",
+            "name": "Vegan Sliced Cheese",
+            "station": "Dining Station",
+            "grams": 45,
+            "factor": 8.69,
+            "category": "Cheese",
+            "group": "dairy",
             "swap": ""
           },
           {
@@ -220,7 +1321,17 @@
           },
           {
             "id": "chase_dinner_20",
-            "name": "Vegan American Sliced Cheese",
+            "name": "Green Beans and Tomatoes",
+            "station": "Dining Station",
+            "grams": 90,
+            "factor": 0.69,
+            "category": "Tomatoes",
+            "group": "veg",
+            "swap": ""
+          },
+          {
+            "id": "chase_dinner_21",
+            "name": "Vegan Mac & Cheese",
             "station": "Dining Station",
             "grams": 45,
             "factor": 8.69,
@@ -229,47 +1340,17 @@
             "swap": ""
           },
           {
-            "id": "chase_dinner_21",
-            "name": "Veggie Burrito",
-            "station": "Dining Station",
-            "grams": 90,
-            "factor": 0.5,
-            "category": "Other vegetables",
-            "group": "veg",
-            "swap": ""
-          },
-          {
             "id": "chase_dinner_22",
-            "name": "Long Grain Brown Rice",
-            "station": "Dining Station",
-            "grams": 55,
-            "factor": 2.53,
-            "category": "Rice",
-            "group": "grain",
-            "swap": ""
-          },
-          {
-            "id": "chase_dinner_23",
-            "name": "Seasoned Black Beans",
-            "station": "Dining Station",
-            "grams": 60,
-            "factor": 1.68,
-            "category": "Beans and pulses (dried)",
-            "group": "plant",
-            "swap": "protein"
-          },
-          {
-            "id": "chase_dinner_24",
-            "name": "Creamy Shrimp Penne",
+            "name": "Sausage & Kale Penne",
             "station": "Dining Station",
             "grams": 85,
-            "factor": 21.13,
-            "category": "Crustaceans",
+            "factor": 9.83,
+            "category": "Pork (pig meat)",
             "group": "meat",
             "swap": "protein"
           },
           {
-            "id": "chase_dinner_25",
+            "id": "chase_dinner_23",
             "name": "Soy Bites",
             "station": "Dining Station",
             "grams": 113,
@@ -279,7 +1360,7 @@
             "swap": "protein"
           },
           {
-            "id": "chase_dinner_26",
+            "id": "chase_dinner_24",
             "name": "Vegan Cheese Pizza",
             "station": "Dining Station",
             "grams": 45,
@@ -289,7 +1370,7 @@
             "swap": ""
           },
           {
-            "id": "chase_dinner_27",
+            "id": "chase_dinner_25",
             "name": "Cheese Pizza",
             "station": "Dining Station",
             "grams": 45,
@@ -299,7 +1380,7 @@
             "swap": ""
           },
           {
-            "id": "chase_dinner_28",
+            "id": "chase_dinner_26",
             "name": "Cheese Bread",
             "station": "Dining Station",
             "grams": 45,
@@ -309,7 +1390,7 @@
             "swap": ""
           },
           {
-            "id": "chase_dinner_29",
+            "id": "chase_dinner_27",
             "name": "Pepperoni Pizza",
             "station": "Dining Station",
             "grams": 85,
@@ -319,7 +1400,7 @@
             "swap": "protein"
           },
           {
-            "id": "chase_dinner_30",
+            "id": "chase_dinner_28",
             "name": "Pasta Noodles",
             "station": "Dining Station",
             "grams": 70,
@@ -329,37 +1410,47 @@
             "swap": ""
           },
           {
-            "id": "chase_dinner_31",
-            "name": "Pulled Chicken Chili",
+            "id": "chase_dinner_29",
+            "name": "Chili Cheddar Potato Soup",
+            "station": "Dining Station",
+            "grams": 45,
+            "factor": 8.69,
+            "category": "Cheese",
+            "group": "dairy",
+            "swap": ""
+          },
+          {
+            "id": "chase_dinner_30",
+            "name": "Chicken Kale Soup",
             "station": "Dining Station",
             "grams": 113,
             "factor": 4.4,
             "category": "Poultry",
+            "group": "meat",
+            "swap": "protein"
+          },
+          {
+            "id": "chase_dinner_31",
+            "name": "Cavatappi Beef Lasagna Bake",
+            "station": "Dining Station",
+            "grams": 113,
+            "factor": 41.35,
+            "category": "Beef & buffalo meat",
             "group": "meat",
             "swap": "protein"
           },
           {
             "id": "chase_dinner_32",
-            "name": "Chicken Broccoli Alfredo Pasta Bake",
+            "name": "Santa Fe Beef",
             "station": "Dining Station",
             "grams": 113,
-            "factor": 4.4,
-            "category": "Poultry",
+            "factor": 41.35,
+            "category": "Beef & buffalo meat",
             "group": "meat",
             "swap": "protein"
           },
           {
             "id": "chase_dinner_33",
-            "name": "Chicken Tinga",
-            "station": "Dining Station",
-            "grams": 113,
-            "factor": 4.4,
-            "category": "Poultry",
-            "group": "meat",
-            "swap": "protein"
-          },
-          {
-            "id": "chase_dinner_34",
             "name": "Shredded Cheddar Cheese",
             "station": "Dining Station",
             "grams": 45,
@@ -369,7 +1460,7 @@
             "swap": ""
           },
           {
-            "id": "chase_dinner_35",
+            "id": "chase_dinner_34",
             "name": "Hoagie Roll",
             "station": "Dining Station",
             "grams": 55,
@@ -379,7 +1470,7 @@
             "swap": ""
           },
           {
-            "id": "chase_dinner_36",
+            "id": "chase_dinner_35",
             "name": "Spinach Wrap",
             "station": "Dining Station",
             "grams": 90,
@@ -389,7 +1480,7 @@
             "swap": ""
           },
           {
-            "id": "chase_dinner_37",
+            "id": "chase_dinner_36",
             "name": "Sundried Tomato Wraps",
             "station": "Dining Station",
             "grams": 90,
@@ -399,7 +1490,7 @@
             "swap": ""
           },
           {
-            "id": "chase_dinner_38",
+            "id": "chase_dinner_37",
             "name": "White Bread",
             "station": "Dining Station",
             "grams": 70,
@@ -409,7 +1500,7 @@
             "swap": ""
           },
           {
-            "id": "chase_dinner_39",
+            "id": "chase_dinner_38",
             "name": "Whole Wheat Bread",
             "station": "Dining Station",
             "grams": 70,
@@ -419,7 +1510,7 @@
             "swap": ""
           },
           {
-            "id": "chase_dinner_40",
+            "id": "chase_dinner_39",
             "name": "Chicken Breast",
             "station": "Dining Station",
             "grams": 113,
@@ -429,7 +1520,7 @@
             "swap": "protein"
           },
           {
-            "id": "chase_dinner_41",
+            "id": "chase_dinner_40",
             "name": "Sliced Ham",
             "station": "Dining Station",
             "grams": 85,
@@ -439,7 +1530,7 @@
             "swap": "protein"
           },
           {
-            "id": "chase_dinner_42",
+            "id": "chase_dinner_41",
             "name": "Sliced Roast Beef",
             "station": "Dining Station",
             "grams": 113,
@@ -449,7 +1540,7 @@
             "swap": "protein"
           },
           {
-            "id": "chase_dinner_43",
+            "id": "chase_dinner_42",
             "name": "Sliced Turkey",
             "station": "Dining Station",
             "grams": 113,
@@ -459,7 +1550,7 @@
             "swap": "protein"
           },
           {
-            "id": "chase_dinner_44",
+            "id": "chase_dinner_43",
             "name": "Tuna Salad",
             "station": "Dining Station",
             "grams": 113,
@@ -469,7 +1560,7 @@
             "swap": "protein"
           },
           {
-            "id": "chase_dinner_45",
+            "id": "chase_dinner_44",
             "name": "Chunky Chicken Salad",
             "station": "Dining Station",
             "grams": 113,
@@ -479,7 +1570,7 @@
             "swap": "protein"
           },
           {
-            "id": "chase_dinner_46",
+            "id": "chase_dinner_45",
             "name": "Tomatoes",
             "station": "Dining Station",
             "grams": 90,
@@ -489,7 +1580,7 @@
             "swap": ""
           },
           {
-            "id": "chase_dinner_47",
+            "id": "chase_dinner_46",
             "name": "Swiss Cheese",
             "station": "Dining Station",
             "grams": 45,
@@ -499,7 +1590,7 @@
             "swap": ""
           },
           {
-            "id": "chase_dinner_48",
+            "id": "chase_dinner_47",
             "name": "Cheddar Cheese",
             "station": "Dining Station",
             "grams": 45,
@@ -509,13 +1600,23 @@
             "swap": ""
           },
           {
-            "id": "chase_dinner_49",
+            "id": "chase_dinner_48",
             "name": "Banana Peppers",
             "station": "Dining Station",
             "grams": 110,
             "factor": 0.71,
             "category": "Bananas",
             "group": "fruit",
+            "swap": ""
+          },
+          {
+            "id": "chase_dinner_49",
+            "name": "Vegan American Sliced Cheese",
+            "station": "Dining Station",
+            "grams": 45,
+            "factor": 8.69,
+            "category": "Cheese",
+            "group": "dairy",
             "swap": ""
           },
           {
