@@ -62,7 +62,10 @@ COOLFOOD_RULES = [
 ]
 
 # Skip pure condiments/toppings that clutter a plate planner
-SKIP_WORDS = re.compile(r"\b(ketchup|mustard|mayonnaise|syrup|sprinkles|salt|pepper|dressing|vinaigrette|sauce|jelly|jam|creamer|sweetener|sugar|water|ice)\b", re.I)
+SKIP_WORDS = re.compile(
+    r"\b(ketchup|mustard|mayonnaise|syrup|sprinkles|salt|pepper|dressing|vinaigrette|sauce|jelly|jam|creamer|sweetener|sugar|water|ice)\b",
+    re.I
+)
 
 def classify_item(name):
     if SKIP_WORDS.search(name):
@@ -86,16 +89,28 @@ def scrape_location(hall_key, info, date_str):
     resp.raise_for_status()
     soup = BeautifulSoup(resp.text, "html.parser")
 
-    meals_found = {"breakfast": [], "lunch": [], "dinner": []}
-    seen = {"breakfast": set(), "lunch": set(), "dinner": set()}
+    meals_found = {
+        "breakfast": [],
+        "continental": [],
+        "brunch": [],
+        "lunch": [],
+        "dinner": []
+    }
+    seen = {k: set() for k in meals_found}
 
-    # CDS pages organize meal periods in tabpanels matching Breakfast, Lunch, Dinner tabs
-    tabs = [t.get_text(" ", strip=True).lower() for t in soup.select('[role="tablist"] button, [role="tablist"] a, .menu-tabs li')]
+    tabs = [
+        t.get_text(" ", strip=True).lower()
+        for t in soup.select('[role="tablist"] button, [role="tablist"] a, .menu-tabs li')
+    ]
     panels = soup.select('[role="tabpanel"]')
 
     for idx, panel in enumerate(panels):
         tab_name = tabs[idx] if idx < len(tabs) else ""
-        if "breakfast" in tab_name:
+        if "continental" in tab_name:
+            meal_key = "continental"
+        elif "brunch" in tab_name:
+            meal_key = "brunch"
+        elif "breakfast" in tab_name:
             meal_key = "breakfast"
         elif "lunch" in tab_name and "late" not in tab_name:
             meal_key = "lunch"
@@ -104,7 +119,6 @@ def scrape_location(hall_key, info, date_str):
         else:
             continue
 
-        # Iterate through stations inside each meal tabpanel
         for station_block in panel.find_all(["div", "section"], recursive=True):
             heading = station_block.find(["h2", "h3", "h4"])
             station_name = heading.get_text(strip=True) if heading else "Dining Station"
@@ -145,7 +159,13 @@ def main():
             meals = scrape_location(hall_key, info, today_est)
         except Exception as e:
             print(f"Warning: failed to scrape {hall_key}: {e}")
-            meals = {"breakfast": [], "lunch": [], "dinner": []}
+            meals = {
+                "breakfast": [],
+                "continental": [],
+                "brunch": [],
+                "lunch": [],
+                "dinner": []
+            }
 
         output["halls"][hall_key] = {
             "name": info["name"],
@@ -153,7 +173,6 @@ def main():
             "meals": meals
         }
 
-    # Only overwrite menu_data.json if at least some items were found (protects against holiday closures)
     total_items = sum(
         len(items)
         for h in output["halls"].values()
