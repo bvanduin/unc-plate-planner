@@ -79,7 +79,7 @@ details p,details li{font-size:.88rem;color:var(--mut)}
   <h1>UNC Dining Plate Planner</h1>
   <span class="sync-pill" id="sync-date">Loading live CDS menu…</span>
 </div>
-<p class="sub">Build a plate from today's <b>Top of Lenoir</b> and <b>Chase Dining Hall</b> menus across Breakfast, Lunch, and Dinner to estimate its climate footprint.</p>
+<p class="sub">Build a plate from today's <b>Top of Lenoir</b> and <b>Chase Dining Hall</b> menus across weekday meals (Breakfast, Lunch, Dinner) or weekend meals (Continental, Brunch, Dinner).</p>
 
 <div id="sum" aria-live="polite">
   <div class="tot-row">
@@ -96,16 +96,11 @@ details p,details li{font-size:.88rem;color:var(--mut)}
     <button class="hall-tab" role="tab" aria-selected="false" data-hall="chase">Chase Dining Hall</button>
   </div>
   <div class="meal-bar">
-    <div class="meal-tabs" role="tablist" aria-label="Meal Period">
-      <button class="meal-tab active" role="tab" aria-selected="true" data-meal="breakfast">Breakfast</button>
-      <button class="meal-tab" role="tab" aria-selected="false" data-meal="lunch">Lunch</button>
-      <button class="meal-tab" role="tab" aria-selected="false" data-meal="dinner">Dinner</button>
-    </div>
+    <div class="meal-tabs" id="meal-tabs" role="tablist" aria-label="Meal Period"></div>
     <span class="hall-meta" id="hall-desc">Carolina Dining Services</span>
   </div>
 </div>
 
-<!-- Dynamic Station-Grouped Meal Presets -->
 <div class="preset-row" id="preset-row"></div>
 
 <div class="toolbar">
@@ -126,7 +121,7 @@ details p,details li{font-size:.88rem;color:var(--mut)}
 <summary>How we calculated this</summary>
 <p>Daily menu items are synced automatically from <b>Carolina Dining Services</b> and mapped to their primary <b>SIMAP Coolfood Pledge (2025)</b> ingredient factor (derived from Poore &amp; Nemecek, 2018).</p>
 <ul>
-<li><b>Station Meal Presets:</b> Combine one item each from key dining stations in today's active menu (e.g., main entree/griddle station + grain/side + vegetable/fruit/drink).</li>
+<li><b>Weekday vs. Weekend Periods:</b> CDS serves <i>Breakfast, Lunch, and Dinner</i> on weekdays, and <i>Continental, Brunch, and Dinner</i> on weekends.</li>
 <li><b>Real-World Comparisons:</b> Driving distance uses the U.S. EPA Greenhouse Gas Equivalencies passenger vehicle average of <b>0.39 kg CO₂e per mile</b>. Smartphone charges use the EPA factor of <b>0.0124 kg CO₂e per full charge</b>.</li>
 <li><b>Portion Weights:</b> Estimated using standard Carolina Dining Services serving portions converted to as-purchased ingredient weight.</li>
 </ul>
@@ -136,6 +131,14 @@ details p,details li{font-size:.88rem;color:var(--mut)}
 <script>
 const KG_PER_MILE = 0.39;
 const KG_PER_PHONE_CHARGE = 0.0124;
+
+const MEAL_LABELS = {
+  breakfast: "Breakfast",
+  continental: "Continental",
+  brunch: "Brunch",
+  lunch: "Lunch",
+  dinner: "Dinner"
+};
 
 const GROUPS = {
   meat:["Meat, Poultry & Seafood","#b5472f"],
@@ -147,8 +150,6 @@ const GROUPS = {
   drink:["Beverages","#5f8aa6"]
 };
 
-// Station-grouped preset definitions: each slot matches an item in today's menu by
-// optional station substring, group, and preferred keywords.
 const STATION_PRESETS = {
   breakfast: [
     {
@@ -166,6 +167,43 @@ const STATION_PRESETS = {
         { group: "plant", keywords: ["tofu", "impossible", "plant", "bean"] },
         { group: "grain", keywords: ["oat", "grit", "potato", "hash", "waffle"] },
         { group: "fruit", keywords: ["melon", "berry", "fruit", "apple"] }
+      ]
+    }
+  ],
+  continental: [
+    {
+      label: "Light Continental Spread",
+      slots: [
+        { group: "grain", keywords: ["waffle", "pancake", "toast", "biscuit", "bagel", "muffin", "croissant", "oat"] },
+        { group: "fruit", keywords: ["berry", "berries", "fruit", "orange", "apple", "melon"] },
+        { group: "drink", keywords: ["coffee", "milk", "oatmilk", "soymilk"] }
+      ]
+    },
+    {
+      label: "Eggs & Morning Bake",
+      slots: [
+        { group: "dairy", keywords: ["egg", "yogurt", "cheese"] },
+        { group: "grain", keywords: ["pancake", "waffle", "biscuit", "potato"] },
+        { group: "fruit", keywords: ["berry", "fruit", "apple"] }
+      ]
+    }
+  ],
+  brunch: [
+    {
+      label: "Brunch Classics + Waffle",
+      slots: [
+        { station: "kitchen table", group: "dairy", keywords: ["egg", "omelet", "pancake", "sausage", "bacon"] },
+        { station: "waffle", group: "grain", keywords: ["waffle", "potato", "hash", "tot", "rice"] },
+        { group: "veg", keywords: ["salad", "greens", "vegetable", "spinach", "corn"] },
+        { group: "fruit", keywords: ["berry", "fruit", "melon", "orange"] }
+      ]
+    },
+    {
+      label: "Plant-Forward Brunch",
+      slots: [
+        { group: "plant", keywords: ["impossible", "chickpea", "tofu", "bean", "plant"] },
+        { group: "grain", keywords: ["potato", "pancake", "waffle", "rice"] },
+        { group: "veg", keywords: ["vegetable", "salad", "greens"] }
       ]
     }
   ],
@@ -209,6 +247,7 @@ const STATION_PRESETS = {
 
 let menuData = null;
 let itemIndex = {};
+let availableMeals = ["breakfast", "lunch", "dinner"];
 let currentHall = "lenoir";
 let currentMeal = "breakfast";
 let searchQuery = "";
@@ -220,6 +259,31 @@ const fmt = x => x.toFixed(2);
 
 $("legend").innerHTML = Object.values(GROUPS).map(g=>`<span><i style="background:${g[1]}"></i>${g[0]}</span>`).join("");
 
+function detectMealSchedule(data) {
+  let isWeekend = false;
+  if (data.updated_at) {
+    const [y, m, d] = data.updated_at.split("-").map(Number);
+    if (y && m && d) {
+      const day = new Date(Date.UTC(y, m - 1, d)).getUTCDay();
+      if (day === 0 || day === 6) isWeekend = true;
+    }
+  }
+  const hasWeekendMeals = Object.values(data.halls || {}).some(h =>
+    (h.meals?.continental?.length || 0) > 0 || (h.meals?.brunch?.length || 0) > 0
+  );
+  if (isWeekend || hasWeekendMeals) {
+    return ["continental", "brunch", "dinner"];
+  }
+  return ["breakfast", "lunch", "dinner"];
+}
+
+function renderMealTabs() {
+  $("meal-tabs").innerHTML = availableMeals.map(m => {
+    const active = m === currentMeal;
+    return `<button class="meal-tab ${active ? "active" : ""}" role="tab" aria-selected="${active}" data-meal="${m}">${MEAL_LABELS[m] || m}</button>`;
+  }).join("");
+}
+
 function pickItemForSlot(pool, slot, usedIds) {
   const candidates = pool.filter(it => !usedIds.has(it.id));
   if (!candidates.length) return null;
@@ -228,13 +292,9 @@ function pickItemForSlot(pool, slot, usedIds) {
   const matchesGroup = it => !slot.group || it.group === slot.group;
   const matchesKeyword = it => !slot.keywords || slot.keywords.some(kw => it.name.toLowerCase().includes(kw));
 
-  // 1. Best match: station + group + keyword
   let hit = candidates.find(it => matchesStation(it) && matchesGroup(it) && matchesKeyword(it));
-  // 2. Group + keyword in active meal
   if (!hit) hit = candidates.find(it => matchesGroup(it) && matchesKeyword(it));
-  // 3. Station match
   if (!hit && slot.station) hit = candidates.find(it => matchesStation(it));
-  // 4. Group match
   if (!hit && slot.group) hit = candidates.find(it => matchesGroup(it));
 
   return hit || null;
@@ -242,10 +302,11 @@ function pickItemForSlot(pool, slot, usedIds) {
 
 function applyStationPreset(presetIdx) {
   if (!menuData) return;
-  const preset = STATION_PRESETS[currentMeal][presetIdx];
+  const presets = STATION_PRESETS[currentMeal] || [];
+  const preset = presets[presetIdx];
   if (!preset) return;
 
-  const pool = menuData.halls[currentHall].meals[currentMeal] || [];
+  const pool = menuData.halls[currentHall]?.meals?.[currentMeal] || [];
   const nextPlate = {};
   const usedIds = new Set();
 
@@ -264,9 +325,10 @@ function applyStationPreset(presetIdx) {
 
 function renderPresets() {
   const presets = STATION_PRESETS[currentMeal] || [];
+  const mealTitle = (MEAL_LABELS[currentMeal] || currentMeal).toLowerCase();
   $("preset-row").innerHTML =
     `<b>Station meal presets:</b>` +
-    presets.map((p, idx) => `<button class="preset-chip" data-preset="${idx}" title="Build a meal from key ${currentMeal} stations">${p.label}</button>`).join("");
+    presets.map((p, idx) => `<button class="preset-chip" data-preset="${idx}" title="Build a ${mealTitle} plate from key stations">${p.label}</button>`).join("");
 }
 
 async function init() {
@@ -276,6 +338,9 @@ async function init() {
     menuData = await res.json();
     $("sync-date").textContent = `CDS Menu Date: ${menuData.updated_at}`;
 
+    availableMeals = detectMealSchedule(menuData);
+    currentMeal = availableMeals[0];
+
     itemIndex = {};
     for (const [hallKey, hall] of Object.entries(menuData.halls)) {
       for (const [mealKey, items] of Object.entries(hall.meals)) {
@@ -284,6 +349,7 @@ async function init() {
         }
       }
     }
+    renderMealTabs();
     renderPresets();
     renderMenu();
     updateSummary();
@@ -303,7 +369,7 @@ function renderMenu() {
   );
 
   if (!items.length) {
-    $("picker").innerHTML = `<p class="empty">No matching dishes found for ${hall.name} (${currentMeal}).</p>`;
+    $("picker").innerHTML = `<p class="empty">No matching dishes found for ${hall.name} (${MEAL_LABELS[currentMeal] || currentMeal}).</p>`;
     return;
   }
 
@@ -354,7 +420,7 @@ function updateSummary() {
 
   let hint = "";
   if (menuData) {
-    const currentPool = menuData.halls[currentHall].meals[currentMeal] || [];
+    const currentPool = menuData.halls[currentHall]?.meals?.[currentMeal] || [];
     for (const x of sel) {
       if (!x.f.swap) continue;
       const alt = currentPool
@@ -388,11 +454,7 @@ document.addEventListener("click", e => {
     updateSummary();
   } else if (b.dataset.meal) {
     currentMeal = b.dataset.meal;
-    document.querySelectorAll(".meal-tab").forEach(t => {
-      const active = t.dataset.meal === currentMeal;
-      t.classList.toggle("active", active);
-      t.setAttribute("aria-selected", active);
-    });
+    renderMealTabs();
     renderPresets();
     renderMenu();
     updateSummary();
